@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGECA - Iniciar Sesión</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+    <div class="login-left">
+        <div class="login-left-content">
+            <div class="logo-icon-large">SG</div>
+            <h1>SGECA</h1>
+            <p>Gestiona tus eventos académicos y científicos</p>
+        </div>
+    </div>
+
+    <div class="login-right">
+        <div class="login-form-container">
+            <h2>Bienvenido</h2>
+            <p class="subtitle">Ingresa tus credenciales para acceder.</p>
+
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="username">Usuario</label>
+                    <input type="text" id="username" class="form-control" placeholder="ana" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" class="form-control" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" class="btn-login">Iniciar Sesión</button>
+            </form>
+
+            <div class="login-footer">
+                <p>¿Olvidaste tu contraseña? Contacta al administrador.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value.trim().toLowerCase();
+            const password = document.getElementById('password').value;
+
+            if ((username === 'ana' || username === 'estudiante') && password === '1234') {
+                window.location.href = 'views/estudiante.html';
+            } 
+            else if ((username === 'vicerrector' || username === 'carlos') && password === 'admin') {
+                window.location.href = 'views/vicerrectoria.html';
+            } 
+            else {
+                alert('Credenciales incorrectas.\n\nEstudiante: ana / 1234\nVicerrector: vicerrector / admin');
+            }
+        }
+    </script>
+</body>
+</html>
