@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGECA - Estudiante</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/estudiante.css">
+</head>
+<body>
+
+    <!-- Sidebar  -->
+    <aside>
+        <div class="logo-area">
+            <div class="logo-icon">SG</div>
+            <span>SGECA</span>
+        </div>
+
+                   <ul class="nav-menu">
+            <li>
+                <a href="#" onclick="showView('view-inicio'); return false;" class="active">
+                    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    Inicio
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="showView('view-eventos'); return false;">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    Eventos
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="showView('view-calendario'); return false;">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    Calendario
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="showView('view-participaciones'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    Mis participaciones
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="showView('view-resultados'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    Resultados y certificados
+                </a>
+            </li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <ul class="nav-menu">
+                <li>
+                    <a onclick="window.location.href='../index.html'">
+                        <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                        Cerrar Sesión
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Topbar Global -->
+    <div class="topbar-global">
+        <div class="user-actions">
+
+            <!-- Notificaciones -->
+            <button class="icon-btn" onclick="showView('view-notificaciones')" title="Notificaciones">
+                <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                <span class="notif-dot"></span>
+            </button>
+
+            <!-- Ajustes -->
+            <button class="icon-btn" title="Ajustes">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            </button>
+            
+            <!-- Perfil -->
+            <div class="user-profile">
+                <span class="user-name">Ana Pérez</span>
+                <div class="user-avatar">
+                    <svg viewBox="0 0 24 24" fill="#94a3b8" width="100%" height="100%"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+
+        <!-- Vista 1: Inicio -->
+        <div id="view-inicio" class="view-section active-view">
+            <div class="topbar">
+                <div class="page-title">
+                    <h1>Hola, Ana</h1>
+                    <p>Esto es lo que necesita tu atención.</p>
+                </div>
+            </div>
+
+            <div class="alert-banner">
+                <p>Envía tu trabajo a la <strong>Jornada Científica Estudiantil</strong>: quedan 11 días (hasta el 28 de octubre).</p>
+                <button class="btn-primary" onclick="showView('view-enviar-trabajo')">Nueva entrega</button>
+            </div>
+
+            <h2>Mis participaciones</h2>
+            <div class="cards-grid" style="margin-bottom: 40px;">
+                <div class="card">
+                    <div class="card-title">Copa Pascal</div>
+                    <div class="card-subtitle">Equipo Alfa</div>
+                    <div class="badges-container"><span class="badge green">Resultado: 2.º lugar</span></div>
+                    <div class="card-actions">
+                        <button class="btn-green" onclick="showView('view-certificado')">Ver certificado</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Fórum de Historia 2025</div>
+                    <div class="card-subtitle">Ana Pérez</div>
+                    <div class="badges-container"><span class="badge green">Resultado: Relevante</span></div>
+                    <div class="card-actions">
+                        <button class="btn-green" onclick="showView('view-certificado')">Ver certificado</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Fórum de Historia 2026</div>
+                    <div class="card-subtitle">Ana Pérez</div>
+                    <div class="badges-container"><span class="badge yellow">Entrega enviada · en evaluación</span></div>
+                    <div class="card-actions">
+                        <button class="btn-outline" onclick="showView('view-participaciones')">Ver envío</button>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Eventos</h2>
+            <div class="tabs-container">
+                <button class="tab-btn active" onclick="switchTab(event, 'tab-abiertos')">Abiertos (3)</button>
+                <button class="tab-btn" onclick="switchTab(event, 'tab-proximos')">Próximos (1)</button>
+                <button class="tab-btn" onclick="switchTab(event, 'tab-finalizados')">Finalizados (4)</button>
+            </div>
+
+            <div id="tab-abiertos" class="tab-content cards-grid" style="display: grid;">
+                <div class="card">
+                    <div class="card-title">Jornada Científica Estudiantil</div>
+                    <div class="badges-container"><span class="badge green">Recibe trabajos</span><span class="badge gray">Científico</span></div>
+                    <div class="card-subtitle">Del 2 al 6 de noviembre<br><strong>Hasta el 28 de octubre</strong></div>
+                    <div class="card-actions">
+                        <button class="btn-primary" onclick="showView('view-enviar-trabajo')">Enviar trabajo</button>
+                        <button class="btn-outline" onclick="showView('view-detalle-evento')">Ver detalle</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Copa de Bases de Datos</div>
+                    <div class="badges-container"><span class="badge blue">Registro abierto</span><span class="badge gray">Académico</span></div>
+                    <div class="card-subtitle">El 4 de noviembre<br><strong>Hasta el 24 de octubre</strong></div>
+                    <div class="card-actions">
+                        <button class="btn-primary">Registrar equipo</button>
+                        <button class="btn-outline">Ver detalle</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Fórum de Historia 2026</div>
+                    <div class="badges-container"><span class="badge yellow">En evaluación</span><span class="badge gray">Científico</span></div>
+                    <div class="card-subtitle">Del 12 al 14 de noviembre<br><strong>Recepción cerrada</strong></div>
+                    <div class="card-actions">
+                        <button class="btn-outline">Ver detalle</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-proximos" class="tab-content cards-grid" style="display: none;">
+                <p style="color: var(--text-gray);">No hay eventos próximos por mostrar.</p>
+            </div>
+            <div id="tab-finalizados" class="tab-content cards-grid" style="display: none;">
+                <p style="color: var(--text-gray);">No hay eventos finalizados por mostrar.</p>
+            </div>
+        </div>
+
+        <!-- Vista 2: Eventos -->
+        <div id="view-eventos" class="view-section">
+            <div class="topbar" style="margin-bottom: 15px;">
+                <div class="page-title">
+                    <h1>Eventos</h1>
+                    <p>Todos los eventos de la universidad, por etapa.</p>
+                </div>
+            </div>
+
+            <div class="tabs-container" style="margin-bottom: 20px;">
+                <button class="tab-btn active" onclick="switchTab(event, 'evt-abiertos')">Abiertos (3)</button>
+                <button class="tab-btn" onclick="switchTab(event, 'evt-proximos')">Próximos (0)</button>
+                <button class="tab-btn" onclick="switchTab(event, 'evt-finalizados')">Finalizados (3)</button>
+            </div>
+
+            <div class="search-filters-bar" style="display: flex; gap: 10px; margin-bottom: 20px;">
+                <input type="text" class="form-control" style="flex: 1;" placeholder="Buscar evento">
+                <button class="btn-outline">Filtros</button>
+            </div>
+
+            <div id="evt-abiertos" class="tab-content cards-grid" style="display: grid;">
+                <div class="card">
+                    <div class="card-title">Jornada Científica Estudiantil</div>
+                    <div class="badges-container"><span class="badge green">Recibe entregas</span><span class="badge gray">Científico</span></div>
+                    <div class="card-subtitle">Del 5 de octubre al 6 de noviembre<br><strong>Hasta el 28 de octubre</strong></div>
+                    <div class="card-actions">
+                        <button class="btn-primary" onclick="showView('view-enviar-trabajo')">Nueva entrega</button>
+                        <button class="btn-outline" onclick="showView('view-detalle-evento')">Ver detalle</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Copa de Bases de Datos</div>
+                    <div class="badges-container"><span class="badge blue">Registro abierto</span><span class="badge gray">Competencia</span></div>
+                    <div class="card-subtitle">Del 1 de octubre al 4 de noviembre<br><strong>Hasta el 24 de octubre</strong></div>
+                    <div class="card-actions">
+                        <button class="btn-primary">Participar</button>
+                        <button class="btn-outline">Ver detalle</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Fórum de Historia 2026</div>
+                    <div class="badges-container"><span class="badge yellow">En evaluación</span><span class="badge gray">Científico</span></div>
+                    <div class="card-subtitle">Del 1 de septiembre al 14 de noviembre<br><strong>Resultados el 30 de octubre</strong></div>
+                    <div class="card-actions">
+                        <button class="btn-outline">Ver detalle</button>
+                    </div>
+                </div>
+            </div>
+            <div id="evt-proximos" class="tab-content cards-grid" style="display: none;">
+                <p style="color: var(--text-gray);">No hay eventos próximos por mostrar.</p>
+            </div>
+            <div id="evt-finalizados" class="tab-content cards-grid" style="display: none;">
+                <p style="color: var(--text-gray);">No hay eventos finalizados por mostrar.</p>
+            </div>
+        </div>
+
+        <!-- Vista 3: Detalle de evento-->
+        <div id="view-detalle-evento" class="view-section">
+            <div class="breadcrumbs">
+                <a onclick="showView('view-eventos')">Eventos</a>
+                <span>&rsaquo;</span>
+                <span>Jornada Científica Estudiantil</span>
+            </div>
+
+            <div class="event-header-detail">
+                <div>
+                    <h1>Jornada Científica Estudiantil</h1>
+                    <p class="event-meta-text">Del 2 al 6 de noviembre de 2026</p>
+                    <div class="badges-row">
+                        <span class="badge green">Recibe trabajos</span>
+                        <span class="badge gray">Científico</span>
+                    </div>
+                </div>
+                <button class="btn-primary" onclick="showView('view-enviar-trabajo')">Enviar trabajo</button>
+            </div>
+
+            <div class="deadline-bar">
+                <p><strong>Fecha límite de recepción: 28 de octubre</strong> · quedan 11 días</p>
+                <span>Después de esa fecha no se aceptan envíos</span>
+            </div>
+
+            <div class="event-layout">
+                <div class="event-main-col">
+                    <div class="content-box">
+                        <p style="margin-bottom: 0;">Espacio anual donde los estudiantes presentan los resultados de su trabajo científico, desde proyectos de software hasta investigaciones sociales y creación artística.</p>
+                    </div>
+                    <div class="content-box">
+                        <h3>Requisitos</h3>
+                        <ul>
+                            <li>Participar de forma individual o en equipo de hasta 5 estudiantes.</li>
+                            <li>Presentar un trabajo inédito, vinculado a una de las temáticas del evento.</li>
+                            <li>Documento en PDF o Word de hasta 10 MB (ponencia y literatura).</li>
+                            <li>Indicar el tutor del trabajo.</li>
+                        </ul>
+                    </div>
+                    <div class="content-box">
+                        <h3>Modalidades</h3>
+                        <div class="tags-list">
+                            <span class="tag">Ponencia / artículo</span>
+                            <span class="tag">Multimedia</span>
+                            <span class="tag">App móvil</span>
+                            <span class="tag">Literatura / periodismo</span>
+                            <span class="tag">Artes plásticas</span>
+                            <span class="tag">Audiovisuales</span>
+                        </div>
+                    </div>
+                    <div class="content-box">
+                        <h3>Temáticas</h3>
+                        <div class="tags-list">
+                            <span class="tag">Ingeniería de software</span>
+                            <span class="tag">Inteligencia artificial</span>
+                            <span class="tag">Educación y sociedad</span>
+                            <span class="tag">Historia y memoria</span>
+                            <span class="tag">Arte y cultura</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-side-col">
+                    <div class="sidebar-box">
+                        <h4>Fechas</h4>
+                        <div class="dates-list">
+                            <div class="date-item"><span>Apertura</span><strong>2 nov</strong></div>
+                            <div class="date-item"><span>Recepción hasta</span><strong>28 oct</strong></div>
+                            <div class="date-item"><span>Clausura</span><strong>6 nov</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vista 4: Enviar trabajar -->
+        <div id="view-enviar-trabajo" class="view-section">
+            <div class="breadcrumbs">
+                <a onclick="showView('view-eventos')">Eventos</a>
+                <span>&rsaquo;</span>
+                <a onclick="showView('view-detalle-evento')">Jornada Científica Estudiantil</a>
+                <span>&rsaquo;</span>
+                <span>Enviar trabajo</span>
+            </div>
+
+            <div class="event-header-detail" style="margin-bottom: 25px;">
+                <div>
+                    <h1>Nueva entrega</h1>
+                    <p class="event-meta-text">Jornada Científica Estudiantil · hasta el 28 de octubre</p>
+                </div>
+            </div>
+
+            <div class="form-layout">
+                <!-- Columna izquierda: Autores -->
+                <div class="form-card">
+                    <h3>Autores</h3>
+                    
+                    <div class="form-group">
+                        <label>Autor(es) · hasta 3</label>
+                        
+                        <input type="text" class="form-control" value="Ana Pérez · autora principal (tú)" readonly style="background-color: #e5e7eb; margin-bottom: 10px;">
+                        
+                        <input type="text" class="form-control" value="Luis Gómez Peña" style="margin-bottom: 10px;">
+                        
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" class="form-control" placeholder="Buscar por usuario o nombre UCI">
+                            <button class="btn-primary" style="padding: 0 15px; font-size: 1.2rem;">+</button>
+                        </div>
+                        
+                        <p class="form-hint" style="margin-top: 10px;">Con un solo autor, la entrega es individual. Cada autor recibe sus notificaciones y su certificado.</p>
+                    </div>
+                </div>
+
+                <!-- Columna derecha: Entrega -->
+                <div class="form-card">
+                    <h3>Entrega</h3>
+                    
+                    <div class="form-group">
+                        <label>Título</label>
+                        <input type="text" class="form-control" value="Atlas sonoro del campus">
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label>Modalidad</label>
+                            <select class="form-control">
+                                <option>Multimedia</option>
+                                <option>Ponencia / artículo</option>
+                                <option>App móvil</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Temática</label>
+                            <select class="form-control">
+                                <option>Arte y cultura</option>
+                                <option>Ingeniería de software</option>
+                                <option>Inteligencia artificial</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tutor</label>
+                        <input type="text" class="form-control" value="MSc. Yadira Ramírez Rodríguez">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Archivo o enlace</label>
+                        <div style="border: 2px dashed #cbd5e1; border-radius: 8px; padding: 25px; text-align: center; background-color: #f9fafb;">
+                            <p style="font-size: 0.9rem; color: var(--text-gray); margin-bottom: 5px;">Pega un enlace o <strong>elige un archivo</strong></p>
+                            <span style="font-size: 0.75rem; color: #9ca3af;">Multimedia: enlace o archivo comprimido · máximo 200 MB</span>
+                        </div>
+                        <p class="form-hint" style="margin-top: 5px;">Para Ponencia / artículo y Literatura se pide un documento PDF o Word de hasta 10 MB.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button class="btn-primary" onclick="enviarTrabajo(event)">Enviar entrega</button>
+                <button class="btn-outline" onclick="showView('view-detalle-evento')">Cancelar</button>
+                <span class="hint-text">Puedes reemplazar la entrega hasta la fecha límite.</span>
+            </div>
+        </div>
+
+        <!-- Vista 5: Calendarrio -->
+        <div id="view-calendario" class="view-section">
+            <div class="topbar" style="margin-bottom: 20px;">
+                <div class="page-title">
+                    <h1>Calendario</h1>
+                    <p>Aperturas, fechas límite y clausuras de los eventos.</p>
+                </div>
+                <div class="user-actions" style="display: flex; align-items: center; gap: 10px;">
+                    <!-- Navegación de mes -->
+                    <button class="btn-outline" style="width: 32px; padding: 0; height: 32px;" onclick="changeMonth(-1)">&lsaquo;</button>
+                    <span id="calendar-month-year-est" style="font-weight: 600; font-size: 0.95rem;">Octubre 2026</span>
+                    <button class="btn-outline" style="width: 32px; padding: 0; height: 32px;" onclick="changeMonth(1)">&rsaquo;</button>
+                    
+                    <!-- Selector de vista (Mes, Semana, Día, Lista) -->
+                    <div class="calendar-view-selector">
+                        <button class="calendar-view-btn-est active" onclick="setCalendarView('mes')">Mes</button>
+                        <button class="calendar-view-btn-est" onclick="setCalendarView('semana')">Semana</button>
+                        <button class="calendar-view-btn-est" onclick="setCalendarView('dia')">Día</button>
+                        <button class="calendar-view-btn-est" onclick="setCalendarView('lista')">Lista</button>
+                    </div>
+                </div>
+            </div>
+
+                <!-- ... (los días del calendario) ... -->
+            <div class="calendar-layout">
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button class="btn-nav-month">&lsaquo;</button>
+                        <h3>Octubre 2026</h3>
+                        <button class="btn-nav-month">&rsaquo;</button>
+                    </div>
+                    <div class="calendar-grid">
+                        <!-- Nombres de los días -->
+                        <div class="day-name">Lun</div>
+                        <div class="day-name">Mar</div>
+                        <div class="day-name">Mié</div>
+                        <div class="day-name">Jue</div>
+                        <div class="day-name">Vie</div>
+                        <div class="day-name">Sáb</div>
+                        <div class="day-name">Dom</div>
+
+                        <!-- Días vacíos (Octubre 2026 empieza en Jueves) -->
+                        <div class="day-cell empty"></div>
+                        <div class="day-cell empty"></div>
+                        <div class="day-cell empty"></div>
+
+                        <!-- Días 1 al 31 -->
+                        <div class="day-cell">1</div>
+                        <div class="day-cell">2</div>
+                        <div class="day-cell">3</div>
+                        <div class="day-cell">4</div>
+
+                        <div class="day-cell">5</div>
+                        <div class="day-cell">6</div>
+                        <div class="day-cell">7</div>
+                        <div class="day-cell">8</div>
+                        <div class="day-cell">9</div>
+                        <div class="day-cell">10</div>
+                        <div class="day-cell">11</div>
+
+                        <div class="day-cell">12</div>
+                        <div class="day-cell">13</div>
+                        <div class="day-cell">14</div>
+                        <div class="day-cell">15</div>
+                        <div class="day-cell">16</div>
+                        <div class="day-cell today">17</div>
+                        <div class="day-cell">18</div>
+
+                        <div class="day-cell">19</div>
+                        <div class="day-cell">20</div>
+                        <div class="day-cell">21</div>
+                        <div class="day-cell">22</div>
+                        <div class="day-cell">23</div>
+
+                        <!-- Día 24 tiene evento (Copa BD) -->
+                        <div class="day-cell has-event yellow-event">24<span class="day-event-label">Copa BD</span></div>
+                        
+                        
+                        <div class="day-cell">25</div>
+                        <div class="day-cell">26</div>
+                        <div class="day-cell">27</div>
+
+                         <!-- Día 28 tiene evento (Jornada fecha límite) -->
+                        <div class="day-cell has-event red-event">28<span class="day-event-label">Jornada límite</span></div>
+                        <div class="day-cell">29</div>
+
+                        <!-- Día 30 tiene evento (Fórum resultados) -->
+                        <div class="day-cell has-event green-event">30<span class="day-event-label">Fórum</span></div>
+                        <div class="day-cell">31</div>
+                    </div>
+                </div>
+
+                <!-- Columna derecha: Próximas fechas --> 
+                <div class="upcoming-dates">
+                    <h3>Próximas fechas</h3>
+
+                    <div class="upcoming-item">
+                        <div class="upcoming-date-box yellow-bg">
+                        <div class="month">Oct</div><div class="day">24</div></div>
+                        <div class="upcoming-info"><h4>Copa de Bases de Datos</h4><p>Cierre de registro</p></div>
+                    </div>
+                    <div class="upcoming-item">
+                        <div class="upcoming-date-box red-bg"><div class="month">Oct</div><div class="day">28</div></div>
+                        <div class="upcoming-info"><h4>Jornada Científica</h4><p>Fecha límite</p></div>
+                    </div>
+                    <div class="upcoming-item">
+                        <div class="upcoming-date-box green-bg"><div class="month">Oct</div><div class="day">30</div></div>
+                        <div class="upcoming-info"><h4>Fórum de Historia 2026</h4><p>Publicación de resultados</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vista 6: Mis participaciones -->
+        <div id="view-participaciones" class="view-section">
+            <div class="topbar" style="margin-bottom: 20px;">
+                <div class="page-title">
+                    <h1>Mis participaciones</h1>
+                    <p>Todos los eventos en que has participado.</p>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 30px;">
+                <div class="card" style="text-align: center;">
+                    <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary-blue);">35</div>
+                    <div style="font-size: 0.85rem; color: var(--text-gray);">Puntos de mérito</div>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary-blue);">2</div>
+                    <div style="font-size: 0.85rem; color: var(--text-gray);">Entregas con distinción</div>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary-blue);">Relevante</div>
+                    <div style="font-size: 0.85rem; color: var(--text-gray);">Mejor calificación</div>
+                </div>
+            </div>
+
+            <h2>Historial</h2>
+            <div class="history-table-container" style="background-color: white; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden; margin-bottom: 30px;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                    <thead>
+                        <tr style="background-color: #f9fafb; border-bottom: 1px solid var(--border-color);">
+                            <th style="padding: 12px 20px; font-size: 0.8rem; color: var(--text-gray);">Evento</th>
+                            <th style="padding: 12px 20px; font-size: 0.8rem; color: var(--text-gray);">Entrega</th>
+                            <th style="padding: 12px 20px; font-size: 0.8rem; color: var(--text-gray);">Calificación</th>
+                            <th style="padding: 12px 20px; font-size: 0.8rem; color: var(--text-gray);">Puntos</th>
+                            <th style="padding: 12px 20px; font-size: 0.8rem; color: var(--text-gray);">Certificado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <td style="padding: 16px 20px;"><strong>Fórum de Historia 2026</strong></td>
+                            <td style="padding: 16px 20px;">Atlas sonoro del campus</td>
+                            <td style="padding: 16px 20px;"><span class="badge yellow">Pendiente</span></td>
+                            <td style="padding: 16px 20px;">—</td>
+                            <td style="padding: 16px 20px; font-size: 0.85rem; color: var(--text-gray);">Disponible al publicar</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <td style="padding: 16px 20px;"><strong>Fórum de Historia 2025</strong></td>
+                            <td style="padding: 16px 20px;">Memoria oral del campus</td>
+                            <td style="padding: 16px 20px;"><span class="badge green">Relevante</span></td>
+                            <td style="padding: 16px 20px;"><strong>20</strong></td>
+                            <td style="padding: 16px 20px;"><button class="btn-green" style="padding: 6px 12px; font-size: 0.8rem;" onclick="showView('view-certificado')">Ver certificado</button></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 16px 20px;"><strong>Copa Pascal</strong></td>
+                            <td style="padding: 16px 20px;">Competencia</td>
+                            <td style="padding: 16px 20px;"><span class="badge green">2.º lugar</span></td>
+                            <td style="padding: 16px 20px;">—</td>
+                            <td style="padding: 16px 20px;"><button class="btn-green" style="padding: 6px 12px; font-size: 0.8rem;" onclick="showView('view-certificado')">Ver certificado</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Vista 7: Resultados y Certificados -->
+        <div id="view-resultados" class="view-section">
+            <div class="topbar" style="margin-bottom: 25px;">
+                <div class="page-title">
+                    <h1>Resultados y certificados</h1>
+                    <p>Aquí aparece lo que alcanzaste en cada evento.</p>
+                </div>
+            </div>
+
+            <div class="results-layout">
+                <div class="results-list">
+                    <div class="result-card">
+                        <div class="result-card-header">
+                            <div>
+                                <div class="result-card-title">Fórum de Historia 2025</div>
+                                <div class="result-card-subtitle">Ana Pérez · Ponencia / artículo</div>
+                            </div>
+                            <span class="badge green">Relevante</span>
+                        </div>
+                        <div class="result-meta">Mérito científico: +20 puntos</div>
+                        <div class="result-actions">
+                            <button class="btn-green" onclick="showView('view-certificado')">Descargar certificado</button>
+                        </div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-card-header">
+                            <div>
+                                <div class="result-card-title">Copa Pascal</div>
+                                <div class="result-card-subtitle">Equipo Alfa · 3 integrantes</div>
+                            </div>
+                            <span class="badge green">2.º lugar</span>
+                        </div>
+                        <div class="result-actions">
+                            <button class="btn-green" onclick="showView('view-certificado')">Descargar certificado</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="certificate-preview">
+                    <div class="cert-university">UNIVERSIDAD DE LAS CIENCIAS<br>INFORMÁTICAS</div>
+                    <div class="cert-title">Certificado</div>
+                    <div class="cert-text">Se otorga a</div>
+                    <div class="cert-name">Ana Pérez</div>
+                    <div class="cert-category-text">por alcanzar la categoría</div>
+                    <div class="cert-category">Relevante</div>
+                    <div class="cert-event">en el Fórum de Historia 2025</div>
+                    <div class="cert-footer">Vista previa de ejemplo</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vista 8: Certificado detallado -->
+        <div id="view-certificado" class="view-section">
+            <div class="breadcrumbs">
+                <a onclick="showView('view-participaciones')" style="cursor: pointer;">Mis participaciones</a>
+                <span>&rsaquo;</span>
+                <span>Certificado</span>
+            </div>
+
+            <div class="cert-top-actions">
+                <div class="page-title">
+                    <h1>Certificado · Fórum de Historia 2025</h1>
+                </div>
+                <button class="btn-green" style="padding: 10px 20px; font-size: 0.9rem;" onclick="alert('Descargando PDF...')">Descargar PDF</button>
+            </div>
+
+            <div class="certificado-layout">
+                <div class="cert-document">
+                    <div class="cert-logo-text">UNIVERSIDAD DE LAS CIENCIAS INFORMÁTICAS</div>
+                    <div class="cert-main-title">Certificado</div>
+                    <div class="cert-subtitle">Se otorga a</div>
+                    <div class="cert-student-name">Ana Pérez</div>
+                    <div class="cert-description">por su entrega «Memoria oral del campus», calificada como</div>
+                    <div class="cert-category-highlight">Relevante</div>
+                    <div class="cert-event-name">en el Fórum de Historia 2025</div>
+                    <div class="cert-footer-note">Vista previa de ejemplo</div>
+                </div>
+
+                <div class="cert-side-panel">
+                    <h4>Detalle</h4>
+                    <div class="cert-detail-row"><span class="cert-detail-label">Evento</span><span class="cert-detail-value">Fórum de Historia 2025</span></div>
+                    <div class="cert-detail-row"><span class="cert-detail-label">Entrega</span><span class="cert-detail-value">Memoria oral del campus</span></div>
+                    <div class="cert-detail-row"><span class="cert-detail-label">Autores</span><span class="cert-detail-value">Ana Pérez</span></div>
+                    <div class="cert-detail-row"><span class="cert-detail-label">Calificación</span><span class="badge green" style="align-self: flex-start;">Relevante</span></div>
+                    <div class="cert-detail-row"><span class="cert-detail-label">Puntos</span><span class="cert-detail-value" style="font-weight: 700;">+20</span></div>
+                    <button class="btn-outline" style="width: 100%; margin-top: 10px;" onclick="showView('view-participaciones')">Volver</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vista 9: Notificaciones -->
+        <div id="view-notificaciones" class="view-section">
+            <div class="topbar" style="margin-bottom: 15px;">
+                <div class="page-title">
+                    <h1>Notificaciones</h1>
+                    <p>Tus avisos recientes sobre eventos y resultados.</p>
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding: 10px 15px; background-color: #f9fafb; border-radius: 6px; border: 1px solid var(--border-color);">
+                <label style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                    <input type="checkbox" id="selectAllNotifs" onchange="toggleAllNotifs(this)"> 
+                    Seleccionar todas
+                </label>
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn-outline" style="padding: 6px 12px; font-size: 0.8rem;" onclick="bulkMarkAsRead()">Marcar leídas</button>
+                    <button class="btn-outline" style="padding: 6px 12px; font-size: 0.8rem; color: #dc2626; border-color: #dc2626;" onclick="bulkDelete()">Eliminar</button>
+                </div>
+            </div>
+
+            <div class="notifications-list">
+                <div class="notification-item unread" id="notif-1">
+                    <input type="checkbox" class="notif-checkbox" onchange="updateSelectedState(this)">
+                    <div class="notif-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg></div>
+                    <div class="notif-content">
+                        <h4>Resultados publicados</h4>
+                        <p>Se han publicado los resultados del <strong>Fórum de Historia 2025</strong>.</p>
+                        <span class="notif-time">Hace 2 horas</span>
+                    </div>
+                    <div class="notif-actions">
+                        <button class="icon-action" onclick="markAsRead('notif-1')">✓</button>
+                        <button class="icon-action delete" onclick="deleteNotification('notif-1')">🗑</button>
+                    </div>
+                </div>
+
+                <div class="notification-item unread" id="notif-2">
+                    <input type="checkbox" class="notif-checkbox" onchange="updateSelectedState(this)">
+                    <div class="notif-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+                    <div class="notif-content">
+                        <h4>Fecha límite próxima</h4>
+                        <p>Quedan pocos días para enviar tu trabajo a la <strong>Jornada Científica</strong>.</p>
+                        <span class="notif-time">Hace 5 horas</span>
+                    </div>
+                    <div class="notif-actions">
+                        <button class="icon-action" onclick="markAsRead('notif-2')">✓</button>
+                        <button class="icon-action delete" onclick="deleteNotification('notif-2')">🗑</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Scripts-->
+    <script src="../js/navegacion.js"></script>
+    <script src="../js/estudiante.js"></script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+/* Variables globales  */
+:root {
+    --primary-blue: #1e3a8a;
+    --primary-blue-hover: #1e40af;
+    --bg-color: #f3f4f6;
+    --card-bg: #ffffff;
+    --text-dark: #1f2937;
+    --text-gray: #6b7280;
+    --border-color: #e5e7eb;
+    
+    --alert-bg: #fff8e6;
+    --alert-border: #d97706;
+    
+    --badge-green-bg: #dcfce7;
+    --badge-green-text: #166534;
+    --badge-yellow-bg: #fef3c7;
+    --badge-yellow-text: #92400e;
+    --badge-gray-bg: #e5e7eb;
+    --badge-gray-text: #374151;
+    --badge-blue-bg: #dbeafe;
+    --badge-blue-text: #1e40af;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+}
+
+body { 
+    background-color: var(--bg-color); 
+    color: var(--text-dark); 
+    display: flex; 
+    min-height: 100vh; 
+}
+
+/* Botones base */
+.btn-primary { 
+    background-color: var(--primary-blue); 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 6px; 
+    font-size: 0.9rem; 
+    font-weight: 600; 
+    cursor: pointer; 
+    transition: 0.2s; 
+}
+.btn-primary:hover { 
+    background-color: var(--primary-blue-hover); 
+}
+
+.btn-outline { 
+    background-color: white; 
+    color: var(--primary-blue); 
+    border: 1px solid var(--primary-blue); 
+    padding: 8px 16px; 
+    border-radius: 6px; 
+    font-size: 0.85rem; 
+    font-weight: 600; 
+    cursor: pointer; 
+    transition: 0.2s; 
+}
+.btn-outline:hover { 
+    background-color: #eff6ff; 
+}
+
+.btn-green { 
+    background-color: #16a34a; 
+    color: white; 
+    border: none; 
+    padding: 8px 16px; 
+    border-radius: 6px; 
+    font-size: 0.85rem; 
+    font-weight: 600; 
+    cursor: pointer; 
+    transition: 0.2s; 
+}
+.btn-green:hover { 
+    background-color: #15803d; 
+}
+
+/* Badges */
+.badge { 
+    font-size: 0.75rem; 
+    font-weight: 600; 
+    padding: 4px 10px; 
+    border-radius: 12px; 
+    display: inline-block; 
+}
+.badge.green { background-color: var(--badge-green-bg); color: var(--badge-green-text); }
+.badge.yellow { background-color: var(--badge-yellow-bg); color: var(--badge-yellow-text); }
+.badge.gray { background-color: var(--badge-gray-bg); color: var(--badge-gray-text); }
+.badge.blue { background-color: var(--badge-blue-bg); color: var(--badge-blue-text); }
+
+/* Sistema de vistas */
+.view-section { 
+    display: none; 
+}
+.view-section.active-view { 
+    display: block; 
+}
+
+/* Topbar global */
+.topbar-global {
+    position: fixed;
+    top: 0;
+    left: 250px;
+    width: calc(100% - 250px);
+    height: 60px;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 40px;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.user-actions { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+}
+
+.icon-btn { 
+    background: transparent; 
+    border: none; 
+    width: 36px; 
+    height: 36px; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    cursor: pointer; 
+    color: var(--text-gray); 
+    position: relative; 
+    transition: 0.2s; 
+}
+.icon-btn:hover { 
+    background-color: #f3f4f6; 
+    color: var(--text-dark); 
+}
+.icon-btn svg { 
+    width: 20px; 
+    height: 20px; 
+    stroke: currentColor; 
+    fill: none; 
+    stroke-width: 2; 
+    stroke-linecap: round; 
+    stroke-linejoin: round; 
+}
+
+.icon-btn .notif-dot { 
+    position: absolute; 
+    top: 6px; 
+    right: 6px; 
+    width: 8px; 
+    height: 8px; 
+    background-color: #ef4444; 
+    border-radius: 50%; 
+    border: 2px solid white; 
+}
+
+.user-profile { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    padding-left: 15px; 
+    border-left: 1px solid var(--border-color); 
+}
+.user-name { 
+    font-size: 0.9rem; 
+    font-weight: 600; 
+    color: var(--text-dark); 
+}
+.user-avatar { 
+    width: 36px; 
+    height: 36px; 
+    border-radius: 50%; 
+    background-color: #cbd5e1; 
+    overflow: hidden; 
+}
